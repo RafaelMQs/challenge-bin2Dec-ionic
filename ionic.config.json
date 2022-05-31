@@ -1,0 +1,7 @@
+{
+  "name": "challenge-bin2Dec-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
