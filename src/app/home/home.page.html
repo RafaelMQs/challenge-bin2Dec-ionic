@@ -2,8 +2,18 @@
     <div class="container-title">
         <ion-title>bin2Dec Challenge</ion-title>
         <ion-label>Convert any binary to decimal number</ion-label>
-        <div class="container-description">
-            <ion-text *ngFor="let description of descTitle" color="success"># {{description}}</ion-text>
+        <div class="container-text">
+            <ion-text *ngFor="let description of descTitleArray" color="success">{{description}}</ion-text>
         </div>
+        <div class="container-text">
+            <ion-text *ngFor="let textLog of textLogArray" [color]="textLog.color">{{textLog.prefix}} {{textLog.text}}</ion-text>
+            <div class="container-text" style="display: flex !important;">
+                >
+                <ion-input [(ngModel)]="commandInput" (ionFocus)="focusTerminalInput()" (ionBlur)="unFocusTerminalInput()" (keypress)="eventHandler($event.keyCode)" id="commandInput">
+
+                </ion-input>
+            </div>
+        </div>
+
     </div>
 </ion-content>
