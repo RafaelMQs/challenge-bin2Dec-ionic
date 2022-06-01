@@ -16,9 +16,9 @@ export class HomePage implements OnInit {
   commandInput: string;
 
   descTitleArray: string[] = [
-    '# Welcome to bin2Dec.',
     '# Use this terminal to convert numbers.',
     '# You may type cls to clear inputs and outputs.',
+    '@ Developed by: Rafael M.'
   ];
 
   textLogArray: any[] = new Array();
@@ -83,7 +83,6 @@ export class HomePage implements OnInit {
           exponent++;
         }
       }
-
       this.textLogModel('>', `num: ${this.commandInput}`, 'ligth');
       this.textLogModel('=', `result: ${this.binaryResult}`, 'primary');
     }
