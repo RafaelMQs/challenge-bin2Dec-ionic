@@ -5,7 +5,7 @@
 ion-content {
     --background: rgb(5, 5, 5);
     .container-title {
-        color: white;
+        color: var(--ion-color-light);
         ion-title {
             padding-bottom: 0;
             font-size: 1.8em;
@@ -20,6 +20,7 @@ ion-content {
                 display: block;
                 padding: 0;
                 font-size: 0.9em;
+                margin-top: 5px;
             }
             ion-input {
                 height: 25px;

@@ -9,7 +9,7 @@
             <ion-text *ngFor="let textLog of textLogArray" [color]="textLog.color">{{textLog.prefix}} {{textLog.text}}</ion-text>
             <div class="container-text" style="display: flex !important;">
                 >
-                <ion-input [(ngModel)]="commandInput" (ionFocus)="focusTerminalInput()" (ionBlur)="unFocusTerminalInput()" (keypress)="eventHandler($event.keyCode)" id="commandInput">
+                <ion-input [(ngModel)]="commandInput" id="commandInput" maxlength="8" (ionFocus)="focusTerminalInput()" (ionBlur)="unFocusTerminalInput()" (keypress)="eventHandler($event.keyCode)" clearInput>
 
                 </ion-input>
             </div>

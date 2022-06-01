@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import {
   Component,
   ElementRef,
@@ -22,6 +23,8 @@ export class HomePage implements OnInit {
 
   textLogArray: any[] = new Array();
 
+  binaryResult = 0;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -32,6 +35,12 @@ export class HomePage implements OnInit {
       'animate__infinite',
       'animate__slow'
     );
+
+    this.textLogArray.push({
+      prefix: '>',
+      text: 'Starting typing a number below...',
+      color: 'success',
+    });
   }
 
   focusTerminalInput() {
@@ -54,12 +63,37 @@ export class HomePage implements OnInit {
   }
 
   eventHandler(keyCode: any) {
-    // eslint-disable-next-line eqeqeq
-    if(keyCode == 13){
-      this.textLogArray.push({prefix: '!', text: this.commandInput, color: 'danger'});
+    if (keyCode == 13) {
+      this.binaryToDecimal();
       this.commandInput = '';
     }
   }
 
+  binaryToDecimal() {
+    if (this.commandInput == 'cls') {
+      this.textLogArray = new Array();
+    } else {
+      this.binaryResult = 0;
+      let exponent = 0;
+      for (let index = this.commandInput.length - 1; index >= 0; index--) {
+        if (this.commandInput[index] != '0' && this.commandInput[index] != '1') {
+          return this.textLogModel('!', `Invalid expression for "${this.commandInput}": expectiong a binary number`, 'danger');
+        } else {
+          this.binaryResult += Number(this.commandInput[index]) * 2 ** exponent;
+          exponent++;
+        }
+      }
 
+      this.textLogModel('>', `num: ${this.commandInput}`, 'ligth');
+      this.textLogModel('=', `result: ${this.binaryResult}`, 'primary');
+    }
+  }
+
+  textLogModel(prefixRef: string, textRef: string, colorRef: string){
+    return this.textLogArray.push({
+      prefix: prefixRef,
+      text: textRef,
+      color: colorRef
+    });
+  }
 }
